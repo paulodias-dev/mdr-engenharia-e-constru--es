@@ -14,8 +14,6 @@ import {
   Menu,
   X,
   Zap,
-  Sun,
-  Moon,
   ArrowUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -49,17 +47,8 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('mdr-theme');
-      return saved ? saved === 'dark' : true;
-    }
-    return true;
-  });
-
-  useEffect(() => {
-    localStorage.setItem('mdr-theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
+  // Temporariamente: modo escuro desativado, mantendo apenas o tema claro.
+  const darkMode = false;
 
   useEffect(() => {
     document.title = SEO_CONFIG.title;
@@ -103,7 +92,7 @@ export default function App() {
 
   return (
     <div
-      data-theme={darkMode ? 'dark' : 'light'}
+      data-theme="light"
       className={`min-h-screen transition-colors duration-500 font-sans selection:bg-[var(--brand-accent)] ${darkMode ? 'bg-[#080808] text-white' : 'bg-[#fcfcfc] text-black'}`}
     >
       {/* Header */}
@@ -116,24 +105,10 @@ export default function App() {
               <a key={link.name} href={link.href} className={`text-[10px] font-bold tracking-[0.3em] uppercase hover:text-[var(--brand-accent-soft)] transition-colors ${darkMode ? 'text-white/70' : 'text-black/70'}`}>{link.name}</a>
             ))}
 
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-full transition-colors ${darkMode ? 'bg-white/10 hover:bg-white/20' : 'bg-black/5 hover:bg-black/10'}`}
-              aria-label="Toggle Theme"
-            >
-              {darkMode ? <Sun size={14} /> : <Moon size={14} />}
-            </button>
-
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-[var(--brand-accent-strong)] px-7 py-3 rounded-sm text-[10px] font-black tracking-[0.2em] hover:bg-[var(--brand-accent)] transition-all uppercase text-white">Falar com Especialista</a>
           </nav>
 
           <div className="flex items-center gap-4 md:hidden">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-full transition-colors ${darkMode ? 'bg-white/10' : 'bg-black/5'}`}
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
             <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -161,7 +136,7 @@ export default function App() {
       <main>
         {/* Hero Section - Page 1 */}
         <section className={`relative min-h-[90vh] flex items-center pt-32 overflow-hidden ${darkMode ? 'bg-black' : 'bg-[#f5f5f5]'}`}>
-          <div className="absolute inset-0 z-0 opacity-40">
+          <div className="absolute inset-0 z-0 opacity-80">
             <img
               src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1920"
               className="w-full h-full object-cover"
