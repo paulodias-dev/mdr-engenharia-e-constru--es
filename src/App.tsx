@@ -31,13 +31,13 @@ const Logo = ({ className }: { className?: string }) => (
   <div className={`flex items-center gap-3 ${className}`}>
     <div className="relative flex flex-col items-start">
       <svg width="45" height="25" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-[-2px]">
-        <path d="M15 45 L50 15 L70 35 L70 20 L80 20 L80 43 L105 60" stroke="#2563eb" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15 45 L50 15 L70 35 L70 20 L80 20 L80 43 L105 60" stroke="var(--brand-accent)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M10 50 L110 50" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
       <div className="flex flex-col">
-        <span className="font-black text-xl tracking-tighter leading-none">MDR <span className="text-blue-600">ENGENHARIA</span></span>
+        <span className="font-black text-xl tracking-tighter leading-none">MDR <span className="text-[var(--brand-accent)]">ENGENHARIA</span></span>
         <div className="flex items-center gap-1">
-          <div className="h-[1.5px] w-3 bg-blue-600"></div>
+          <div className="h-[1.5px] w-3 bg-[var(--brand-accent)]"></div>
           <span className="text-[8px] uppercase tracking-[0.4em] font-bold opacity-50">E Construção</span>
         </div>
       </div>
@@ -102,7 +102,10 @@ export default function App() {
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 font-sans selection:bg-blue-600 ${darkMode ? 'bg-[#080808] text-white' : 'bg-[#fcfcfc] text-black'}`}>
+    <div
+      data-theme={darkMode ? 'dark' : 'light'}
+      className={`min-h-screen transition-colors duration-500 font-sans selection:bg-[var(--brand-accent)] ${darkMode ? 'bg-[#080808] text-white' : 'bg-[#fcfcfc] text-black'}`}
+    >
       {/* Header */}
       <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? (darkMode ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-white/80 backdrop-blur-md border-b border-black/5') : 'bg-transparent'} py-4`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -110,7 +113,7 @@ export default function App() {
 
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className={`text-[10px] font-bold tracking-[0.3em] uppercase hover:text-blue-500 transition-colors ${darkMode ? 'text-white/70' : 'text-black/70'}`}>{link.name}</a>
+              <a key={link.name} href={link.href} className={`text-[10px] font-bold tracking-[0.3em] uppercase hover:text-[var(--brand-accent-soft)] transition-colors ${darkMode ? 'text-white/70' : 'text-black/70'}`}>{link.name}</a>
             ))}
 
             <button
@@ -121,7 +124,7 @@ export default function App() {
               {darkMode ? <Sun size={14} /> : <Moon size={14} />}
             </button>
 
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-blue-700 px-7 py-3 rounded-sm text-[10px] font-black tracking-[0.2em] hover:bg-blue-600 transition-all uppercase text-white">Falar com Especialista</a>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-[var(--brand-accent-strong)] px-7 py-3 rounded-sm text-[10px] font-black tracking-[0.2em] hover:bg-[var(--brand-accent)] transition-all uppercase text-white">Falar com Especialista</a>
           </nav>
 
           <div className="flex items-center gap-4 md:hidden">
@@ -150,7 +153,7 @@ export default function App() {
             {navLinks.map((link) => (
               <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-2xl font-black tracking-tighter uppercase">{link.name}</a>
             ))}
-            <a href={whatsappLink} className="w-full bg-blue-700 py-6 rounded-2xl text-center font-black text-xl text-white">WhatsApp</a>
+            <a href={whatsappLink} className="w-full bg-[var(--brand-accent-strong)] py-6 rounded-2xl text-center font-black text-xl text-white">WhatsApp</a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -175,18 +178,18 @@ export default function App() {
               className="max-w-3xl"
             >
               <div className="flex items-center gap-4 mb-10">
-                <div className="h-px w-12 bg-blue-600"></div>
-                <span className="text-blue-500 text-[10px] font-black uppercase tracking-[0.5em]">Excelência em Serviços</span>
+                <div className="h-px w-12 bg-[var(--brand-accent)]"></div>
+                <span className="text-[var(--brand-accent-soft)] text-[10px] font-black uppercase tracking-[0.5em]">Excelência em Serviços</span>
               </div>
               <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-10 uppercase">
                 MDR ENGENHARIA<br />
-                <span className="text-blue-600 italic">E CONSTRUÇÃO</span>
+                <span className="text-[var(--brand-accent)] italic">E CONSTRUÇÃO</span>
               </h1>
               <p className={`text-xl max-w-xl mb-12 font-light leading-relaxed ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
                 Há mais de 10 anos transformando ambientes com solidez, transparência e tecnologia.
               </p>
               <div className="flex flex-col sm:flex-row gap-5">
-                <a href={whatsappLink} className="bg-blue-700 text-white px-12 py-6 rounded-sm font-black text-xs tracking-widest uppercase hover:bg-blue-600 transition-all flex items-center justify-center gap-3">
+                <a href={whatsappLink} className="bg-[var(--brand-accent-strong)] text-white px-12 py-6 rounded-sm font-black text-xs tracking-widest uppercase hover:bg-[var(--brand-accent)] transition-all flex items-center justify-center gap-3">
                   Solicitar Proposta <ArrowRight size={16} />
                 </a>
               </div>
@@ -199,7 +202,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-black mb-10 md:mb-16 uppercase tracking-tighter italic">Sobre nossa <span className="text-blue-600">Empresa</span></h2>
+                <h2 className="text-3xl md:text-4xl font-black mb-10 md:mb-16 uppercase tracking-tighter italic">Sobre nossa <span className="text-[var(--brand-accent)]">Empresa</span></h2>
                 <div className="grid gap-8">
                   {[
                     { title: "Missão", content: "Executar obras com excelência técnica e planejamento, valorizando a qualidade, o prazo e a satisfação do cliente." },
@@ -211,7 +214,7 @@ export default function App() {
                       whileHover={{ x: 10 }}
                       className="group"
                     >
-                      <h3 className="text-2xl font-bold mb-4 border-b-2 border-blue-600 pb-2 inline-block transition-all group-hover:pr-10">{item.title}</h3>
+                      <h3 className="text-2xl font-bold mb-4 border-b-2 border-[var(--brand-accent)] pb-2 inline-block transition-all group-hover:pr-10">{item.title}</h3>
                       <p className={`text-lg leading-relaxed ${darkMode ? 'text-white/50' : 'text-black/50'}`}>{item.content}</p>
                     </motion.div>
                   ))}
@@ -226,7 +229,7 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-4 md:-bottom-10 md:-left-10 bg-blue-700 p-8 md:p-12 text-white shadow-2xl">
+                <div className="absolute -bottom-6 -left-4 md:-bottom-10 md:-left-10 bg-[var(--brand-accent-strong)] p-8 md:p-12 text-white shadow-2xl">
                   <div className="text-4xl md:text-5xl font-black mb-1">10+</div>
                   <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest opacity-70">Anos de Expertise</div>
                 </div>
@@ -238,7 +241,7 @@ export default function App() {
         {/* Quem Somos - Page 3 */}
         <section className={`py-16 md:py-32 border-y ${darkMode ? 'border-white/5 bg-black' : 'border-black/5 bg-[#fcfcfc]'}`}>
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-8 md:mb-12 uppercase tracking-tighter italic">Quem <span className="text-blue-600">Somos</span></h2>
+            <h2 className="text-3xl md:text-4xl font-black mb-8 md:mb-12 uppercase tracking-tighter italic">Quem <span className="text-[var(--brand-accent)]">Somos</span></h2>
             <div className={`space-y-6 md:space-y-8 text-base md:text-lg leading-relaxed ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
               <p>
                 A MDR Engenharia é uma empresa especializada a mais de 10 anos em soluções integradas de construção civil, segurança eletrônica e tecnologia da informação, atuando com foco em qualidade, segurança e planejamento em cada etapa do projeto.
@@ -257,14 +260,14 @@ export default function App() {
         <section id="servicos" className={`py-16 md:py-32 ${darkMode ? 'bg-[#080808]' : 'bg-white'}`}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16 md:mb-24">
-              <h2 className="text-xs md:text-sm font-bold text-blue-500 uppercase tracking-[0.5em] mb-4 md:mb-6">Nosso Portfólio</h2>
-              <h3 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic">Escopo de <span className="text-blue-600">Serviços</span></h3>
+              <h2 className="text-xs md:text-sm font-bold text-[var(--brand-accent-soft)] uppercase tracking-[0.5em] mb-4 md:mb-6">Nosso Portfólio</h2>
+              <h3 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic">Escopo de <span className="text-[var(--brand-accent)]">Serviços</span></h3>
             </div>
 
             {/* Manutenção Predial */}
             <div className="mb-16 md:mb-32">
               <div className="flex items-center gap-4 mb-8 md:mb-12">
-                <Construction className="text-blue-600" size={32} />
+                <Construction className="text-[var(--brand-accent)]" size={32} />
                 <h4 className="text-xl md:text-2xl font-black uppercase tracking-tighter">Manutenção Predial</h4>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -276,12 +279,12 @@ export default function App() {
                   { title: "Pintura", items: ["Pintura interna e externa", "Texturas e impermeabilização", "Entregas limpas"] },
                   { title: "Complementares", items: ["Demolições e preparo de terreno", "Gesso, forro e drywall", "Manutenções pós-obra"] }
                 ].map((s, i) => (
-                  <div key={i} className={`p-8 border rounded-sm transition-all ${darkMode ? 'bg-zinc-900 border-white/5 hover:border-blue-600/50' : 'bg-gray-50 border-black/5 hover:border-blue-600/50 hover:bg-white hover:shadow-xl'}`}>
-                    <h5 className="text-xl font-bold mb-6 text-blue-500">{s.title}</h5>
+                  <div key={i} className={`p-8 border rounded-sm transition-all ${darkMode ? 'bg-zinc-900 border-white/5 hover:border-[var(--brand-accent)]' : 'bg-gray-50 border-black/5 hover:border-[var(--brand-accent)] hover:bg-white hover:shadow-xl'}`}>
+                    <h5 className="text-xl font-bold mb-6 text-[var(--brand-accent-soft)]">{s.title}</h5>
                     <ul className="space-y-3">
                       {s.items.map((item, idx) => (
                         <li key={idx} className={`text-sm flex items-start gap-3 ${darkMode ? 'text-white/40' : 'text-black/40'}`}>
-                          <CheckCircle2 size={14} className="text-blue-600 mt-1 shrink-0" />
+                          <CheckCircle2 size={14} className="text-[var(--brand-accent)] mt-1 shrink-0" />
                           {item}
                         </li>
                       ))}
@@ -295,7 +298,7 @@ export default function App() {
             <div className="grid lg:grid-cols-2 gap-12">
               <div className={`p-12 border rounded-sm relative overflow-hidden group ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-50 border-black/5'}`}>
                 <h4 className="text-2xl font-black uppercase tracking-tighter mb-8 flex items-center gap-4 relative z-10">
-                  <ShieldCheck className="text-blue-600" size={32} />
+                  <ShieldCheck className="text-[var(--brand-accent)]" size={32} />
                   Segurança Eletrônica
                 </h4>
                 <ul className="space-y-4 relative z-10">
@@ -306,17 +309,17 @@ export default function App() {
                     "Automação residencial e comercial – integração total"
                   ].map((text, i) => (
                     <li key={i} className={`flex items-center gap-4 ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)]"></div>
                       {text}
                     </li>
                   ))}
                 </ul>
-                <div className={`mt-8 relative z-10 text-xs font-bold text-blue-500 uppercase tracking-widest border-t pt-6 ${darkMode ? 'border-white/5' : 'border-black/5'}`}>Benefícios: Monitoramento 24/7 e Sistemas Integrados</div>
+                <div className={`mt-8 relative z-10 text-xs font-bold text-[var(--brand-accent-soft)] uppercase tracking-widest border-t pt-6 ${darkMode ? 'border-white/5' : 'border-black/5'}`}>Benefícios: Monitoramento 24/7 e Sistemas Integrados</div>
               </div>
 
               <div className={`p-12 border rounded-sm relative overflow-hidden group ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-50 border-black/5'}`}>
                 <h4 className="text-2xl font-black uppercase tracking-tighter mb-8 flex items-center gap-4 relative z-10">
-                  <Cpu className="text-blue-600" size={32} />
+                  <Cpu className="text-[var(--brand-accent)]" size={32} />
                   Serviços de TI
                 </h4>
                 <ul className="space-y-4 relative z-10">
@@ -327,12 +330,12 @@ export default function App() {
                     "Consultoria em tecnologia: projetos personalizados"
                   ].map((text, i) => (
                     <li key={i} className={`flex items-center gap-4 ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)]"></div>
                       {text}
                     </li>
                   ))}
                 </ul>
-                <div className={`mt-8 relative z-10 text-xs font-bold text-blue-500 uppercase tracking-widest border-t pt-6 ${darkMode ? 'border-white/5' : 'border-black/5'}`}>Benefícios: Operações ágeis e suporte contínuo</div>
+                <div className={`mt-8 relative z-10 text-xs font-bold text-[var(--brand-accent-soft)] uppercase tracking-widest border-t pt-6 ${darkMode ? 'border-white/5' : 'border-black/5'}`}>Benefícios: Operações ágeis e suporte contínuo</div>
               </div>
             </div>
           </div>
@@ -343,9 +346,9 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 md:gap-20">
               <div>
-                <h2 className="text-xs md:text-sm font-bold text-blue-500 uppercase tracking-[0.5em] mb-6 md:mb-10">Qualidade Garantida</h2>
+                <h2 className="text-xs md:text-sm font-bold text-[var(--brand-accent-soft)] uppercase tracking-[0.5em] mb-6 md:mb-10">Qualidade Garantida</h2>
                 <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase italic leading-[0.9] mb-8 md:mb-12">
-                  DIFERENCIAIS MDR<br /><span className="text-blue-600">ENGENHARIA</span>
+                  DIFERENCIAIS MDR<br /><span className="text-[var(--brand-accent)]">ENGENHARIA</span>
                 </h3>
                 <div className="space-y-10">
                   {[
@@ -356,7 +359,7 @@ export default function App() {
                     { t: "Equipe qualificada e confiável", d: "Profissionais experientes em cada área de atuação." }
                   ].map((item, i) => (
                     <div key={i} className="flex gap-6">
-                      <div className="shrink-0 w-12 h-12 rounded-full border border-blue-600 flex items-center justify-center text-blue-600 font-black">
+                      <div className="shrink-0 w-12 h-12 rounded-full border border-[var(--brand-accent)] flex items-center justify-center text-[var(--brand-accent)] font-black">
                         <CheckCircle2 size={24} />
                       </div>
                       <div>
@@ -383,7 +386,7 @@ export default function App() {
         {/* Seguimentos Atendidos - Page 8 */}
         <section className={`py-16 md:py-32 border-y ${darkMode ? 'bg-[#080808] border-white/5' : 'bg-white border-black/5'}`}>
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-12 md:mb-20 uppercase tracking-tighter italic">Seguimentos <span className="text-blue-600">Atendidos</span></h2>
+            <h2 className="text-3xl md:text-4xl font-black mb-12 md:mb-20 uppercase tracking-tighter italic">Seguimentos <span className="text-[var(--brand-accent)]">Atendidos</span></h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
               {[
                 { label: "Obras Residenciais", icon: Layout },
@@ -394,8 +397,8 @@ export default function App() {
                 { label: "Tecnologia da Informação", icon: Cpu }
               ].map((item, i) => (
                 <div key={i} className="group">
-                  <div className={`w-20 h-20 mx-auto rounded-full border flex items-center justify-center mb-6 group-hover:bg-blue-700 transition-colors ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-100 border-black/5'}`}>
-                    <item.icon size={32} className="text-blue-600 group-hover:text-white transition-colors" />
+                  <div className={`w-20 h-20 mx-auto rounded-full border flex items-center justify-center mb-6 group-hover:bg-[var(--brand-accent-strong)] transition-colors ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-100 border-black/5'}`}>
+                    <item.icon size={32} className="text-[var(--brand-accent)] group-hover:text-white transition-colors" />
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-widest leading-relaxed block">{item.label}</span>
                 </div>
@@ -424,38 +427,38 @@ export default function App() {
             <div className="grid lg:grid-cols-2 gap-12 md:gap-20">
               <div>
                 <Logo className="mb-10 md:mb-12" />
-                <h4 className="text-4xl md:text-5xl font-black mb-10 md:mb-12 uppercase tracking-tighter italic">Fale com a <span className="text-blue-600">Gente!</span></h4>
+                <h4 className="text-4xl md:text-5xl font-black mb-10 md:mb-12 uppercase tracking-tighter italic">Fale com a <span className="text-[var(--brand-accent)]">Gente!</span></h4>
                 <div className="space-y-10">
                   <div className="flex items-center gap-6">
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
-                      <Phone className="text-blue-600" />
+                      <Phone className="text-[var(--brand-accent)]" />
                     </div>
                     <span className="text-2xl font-black">{contactInfo.phone}</span>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className={`shrink-0 w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
-                      <Search className="text-blue-600" size={20} />
+                      <Search className="text-[var(--brand-accent)]" size={20} />
                     </div>
                     <span className="text-md font-bold break-all">{contactInfo.email}</span>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
-                      <Instagram className="text-blue-600" size={20} />
+                      <Instagram className="text-[var(--brand-accent)]" size={20} />
                     </div>
                     <span className="text-md font-bold">{contactInfo.instagram}</span>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
-                      <Layout className="text-blue-600" size={20} />
+                      <Layout className="text-[var(--brand-accent)]" size={20} />
                     </div>
                     <span className="text-md font-bold">{contactInfo.location}</span>
                   </div>
                 </div>
               </div>
               <div className="flex flex-col justify-end mt-8 lg:mt-0">
-                <div className="p-8 md:p-12 bg-blue-600 rounded-sm">
+                <div className="p-8 md:p-12 bg-[var(--brand-accent)] rounded-sm">
                   <h2 className="text-3xl md:text-4xl font-black mb-6 md:mb-8 italic uppercase text-white">Pronto para começar seu projeto?</h2>
-                  <a href={whatsappLink} className="bg-white text-blue-600 px-4 md:px-12 py-5 md:py-6 rounded-sm font-black text-center block hover:bg-black hover:text-white transition-all uppercase tracking-widest text-[10px] md:text-xs">
+                  <a href={whatsappLink} className="bg-white text-[var(--brand-accent)] px-4 md:px-12 py-5 md:py-6 rounded-sm font-black text-center block hover:bg-black hover:text-white transition-all uppercase tracking-widest text-[10px] md:text-xs">
                     Falar com Especialista
                   </a>
                 </div>
@@ -473,7 +476,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 p-3 md:p-4 bg-blue-600 text-white rounded-full shadow-2xl hover:bg-blue-700 transition-colors"
+              className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 p-3 md:p-4 bg-[var(--brand-accent)] text-white rounded-full shadow-2xl hover:bg-[var(--brand-accent-strong)] transition-colors"
               aria-label="Voltar ao topo"
             >
               <ArrowUp size={24} />

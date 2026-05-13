@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+:root {
+  --brand-accent: #083188; /* blue-600 */
+  --brand-accent-soft: #093a9c; /* blue-500 */
+  --brand-accent-strong: #050672; /* blue-700 */
+}
+
+/* Darker navy accent on light theme */
+[data-theme="light"] {
+  /* --brand-accent: #0b2a6f;
+  --brand-accent-soft: #123b8a;
+  --brand-accent-strong: #061a45;   */
+  
+  --brand-accent: #0b2a6f;
+  --brand-accent-soft: #123b8a;
+  --brand-accent-strong: #050672;
+}
