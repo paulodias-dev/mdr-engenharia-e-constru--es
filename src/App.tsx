@@ -1,10 +1,10 @@
 import {
   ShieldCheck,
   Search,
-  Cpu,
   Construction,
   Layout,
   Hammer,
+  MessageCircle,
   Phone,
   Instagram,
   Linkedin,
@@ -21,8 +21,8 @@ import { useState, useEffect } from 'react';
 
 // SEO Config
 const SEO_CONFIG = {
-  title: "MDR Engenharia e Construção | Excelência em Construção, Segurança e TI",
-  description: "MDR Engenharia: Há mais de 10 anos transformando ideias em resultados concretos. Especialistas em construção civil, segurança eletrônica e infraestrutura de TI.",
+  title: "MDR Engenharia e Construção | Excelência em Construção, Reformas e Segurança",
+  description: "MDR Engenharia: há mais de 10 anos transformando ideias em resultados concretos. Especialistas em construção civil, reformas, regularização e segurança eletrônica.",
 };
 
 const Logo = ({ className }: { className?: string }) => (
@@ -68,13 +68,17 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappLink = "https://wa.me/556284279654";
+  const whatsappLink = "https://wa.me/5562984279654";
   const contactInfo = {
-    phone: "62 8427-9654",
+    phones: ["62 98427-9654", "62 99311-1770"],
     email: "comercial@mdrengenharia.com.br",
     instagram: "@mdrengenharia_",
     location: "Goiânia, Goiás"
   };
+  const contactPhones = [
+    { label: contactInfo.phones[0], href: "tel:+5562984279654" },
+    { label: contactInfo.phones[1], href: "tel:+5562993111770" }
+  ];
 
   const navLinks = [
     { name: 'Empresa', href: '#sobre' },
@@ -128,7 +132,15 @@ export default function App() {
             {navLinks.map((link) => (
               <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-2xl font-black tracking-tighter uppercase">{link.name}</a>
             ))}
-            <a href={whatsappLink} className="w-full bg-[var(--brand-accent-strong)] py-6 rounded-2xl text-center font-black text-xl text-white">WhatsApp</a>
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+              className="w-full bg-[var(--brand-accent-strong)] py-6 rounded-2xl text-center font-black text-xl text-white"
+            >
+              WhatsApp
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -181,7 +193,7 @@ export default function App() {
                 <div className="grid gap-8">
                   {[
                     { title: "Missão", content: "Executar obras com excelência técnica e planejamento, valorizando a qualidade, o prazo e a satisfação do cliente." },
-                    { title: "Visão", content: "Construir cada projeto con transparência, qualidade e respeito, entregando sempre excelência em cada serviço." },
+                    { title: "Visão", content: "Construir cada projeto com transparência, qualidade e respeito, entregando sempre excelência em cada serviço." },
                     { title: "Valores", content: "Fazer o que é certo, excelência, transparência, segurança, responsabilidade." }
                   ].map((item, i) => (
                     <motion.div
@@ -219,13 +231,13 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-black mb-8 md:mb-12 uppercase tracking-tighter italic">Quem <span className="text-[var(--brand-accent)]">Somos</span></h2>
             <div className={`space-y-6 md:space-y-8 text-base md:text-lg leading-relaxed ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
               <p>
-                A MDR Engenharia é uma empresa especializada a mais de 10 anos em soluções integradas de construção civil, segurança eletrônica e tecnologia da informação, atuando com foco em qualidade, segurança e planejamento em cada etapa do projeto.
+                A MDR Engenharia é uma empresa especializada há mais de 10 anos em soluções integradas de construção civil, reformas e segurança eletrônica, atuando com foco em qualidade, segurança e planejamento em cada etapa do projeto.
               </p>
               <p>
-                Nosso compromisso é transformar ideias em resultados concretos, oferecendo serviços completos que vão do planejamento e execução da obra até sistemas de segurança e infraestrutura de TI, sempre com acompanhamento técnico e transparência total.
+                Nosso compromisso é transformar ideias em resultados concretos, oferecendo serviços completos que vão do planejamento e execução da obra até regularização, consultoria e sistemas de segurança eletrônica, sempre com acompanhamento técnico e transparência total.
               </p>
               <p>
-                Cada projeto é conduzido com responsabilidade e atenção aos detalhes, garantindo ao cliente tranquilidade, cumprimento de prazos e excelência nos resultados, unindo eficiência construtiva, proteção e conectividade em soluções integradas.
+                Cada projeto é conduzido com responsabilidade e atenção aos detalhes, garantindo ao cliente tranquilidade, cumprimento de prazos e excelência nos resultados, unindo eficiência construtiva, proteção e valorização do patrimônio em soluções integradas.
               </p>
             </div>
           </div>
@@ -239,49 +251,107 @@ export default function App() {
               <h3 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic">Escopo de <span className="text-[var(--brand-accent)]">Serviços</span></h3>
             </div>
 
-            {/* Manutenção Predial */}
-            <div className="mb-16 md:mb-32">
-              <div className="flex items-center gap-4 mb-8 md:mb-12">
-                <Construction className="text-[var(--brand-accent)]" size={32} />
-                <h4 className="text-xl md:text-2xl font-black uppercase tracking-tighter">Manutenção Predial</h4>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[
-                  { title: "Instalações Elétricas", items: ["Infraestrutura elétrica completa", "Iluminação, tomadas e quadros", "Padrão de entrada e distribuição"] },
-                  { title: "Instalações Hidráulicas", items: ["Rede de água fria e quente", "Esgoto e reservatórios", "Instalação de louças e metais"] },
-                  { title: "Alvenaria e Estrutura", items: ["Paredes, divisórias e rebocos", "Concretagem e fundação", "Estrutura metálica"] },
-                  { title: "Revestimento", items: ["Piso, porcelanato e cerâmica", "Bancadas e soleiras", "Acabamentos finos"] },
-                  { title: "Pintura", items: ["Pintura interna e externa", "Texturas e impermeabilização", "Entregas limpas"] },
-                  { title: "Complementares", items: ["Demolições e preparo de terreno", "Gesso, forro e drywall", "Manutenções pós-obra"] }
-                ].map((s, i) => (
-                  <div key={i} className={`p-8 border rounded-sm transition-all ${darkMode ? 'bg-zinc-900 border-white/5 hover:border-[var(--brand-accent)]' : 'bg-gray-50 border-black/5 hover:border-[var(--brand-accent)] hover:bg-white hover:shadow-xl'}`}>
-                    <h5 className="text-xl font-bold mb-6 text-[var(--brand-accent-soft)]">{s.title}</h5>
-                    <ul className="space-y-3">
-                      {s.items.map((item, idx) => (
-                        <li key={idx} className={`text-sm flex items-start gap-3 ${darkMode ? 'text-white/40' : 'text-black/40'}`}>
-                          <CheckCircle2 size={14} className="text-[var(--brand-accent)] mt-1 shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
+            {/* Construção e Reformas / Regularização e Consultoria / Gerenciamento de Obras */}
+            <div className="grid lg:grid-cols-3 gap-8 mb-16 md:mb-24">
+              {[
+                {
+                  title: "Construção e Reformas",
+                  icon: Construction,
+                  description: "Obras executadas com planejamento, acompanhamento técnico e foco em qualidade, prazo e organização.",
+                  items: [
+                    "Construção residencial",
+                    "Construção comercial",
+                    "Ampliações",
+                    "Execução de obras",
+                    "Retrofit",
+                    "Modernização de ambientes",
+                    "Revitalização de imóveis",
+                    "Gerenciamento de obras"
+                  ]
+                },
+                {
+                  title: "Regularização e Consultoria",
+                  icon: Search,
+                  description: "Soluções técnicas para adequação, regularização e acompanhamento profissional de obras e imóveis.",
+                  items: [
+                    "Laudos técnicos",
+                    "ART",
+                    "Vistorias",
+                    "Consultoria técnica",
+                    "Regularização de imóveis"
+                  ]
+                },
+                {
+                  title: "Gerenciamento de Obras",
+                  icon: Layout,
+                  description: "Gerenciamento eficiente para garantir organização, controle e qualidade em todas as etapas da obra.",
+                  items: [
+                    "Planejamento",
+                    "Cronograma de execução",
+                    "Fiscalização de obra",
+                    "Controle de qualidade",
+                    "Gestão de fornecedores",
+                    "Acompanhamento técnico"
+                  ]
+                }
+              ].map((s, i) => (
+                <div key={i} className={`p-8 md:p-10 border rounded-sm transition-all ${darkMode ? 'bg-zinc-900 border-white/5 hover:border-[var(--brand-accent)]' : 'bg-gray-50 border-black/5 hover:border-[var(--brand-accent)] hover:bg-white hover:shadow-xl'}`}>
+                  <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 flex items-center gap-4">
+                    <s.icon className="text-[var(--brand-accent)]" size={28} />
+                    {s.title}
+                  </h4>
+                  <p className={`text-sm leading-relaxed mb-8 ${darkMode ? 'text-white/50' : 'text-black/50'}`}>{s.description}</p>
+                  <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-3">
+                    {s.items.map((item, idx) => (
+                      <li key={idx} className={`text-sm flex items-start gap-3 ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
+                        <CheckCircle2 size={14} className="text-[var(--brand-accent)] mt-1 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
 
-            {/* Segurança e TI */}
+            {/* Solução Completa + Segurança Eletrônica */}
             <div className="grid lg:grid-cols-2 gap-12">
-              <div className={`p-12 border rounded-sm relative overflow-hidden group ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-50 border-black/5'}`}>
-                <h4 className="text-2xl font-black uppercase tracking-tighter mb-8 flex items-center gap-4 relative z-10">
+              <div className="relative overflow-hidden rounded-sm border border-[var(--brand-accent)] bg-[var(--brand-accent-strong)] text-white p-10 md:p-12 shadow-2xl">
+                <div className="flex items-center gap-4 mb-8">
+                  <Hammer size={28} className="opacity-90" />
+                  <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tighter">Solução Completa</h4>
+                </div>
+                <p className="text-base md:text-lg leading-relaxed text-white/85">
+                  Além da construção ou reforma, a MDR também entrega o imóvel preparado com soluções em segurança eletrônica, proporcionando mais praticidade, proteção e valorização do patrimônio.
+                </p>
+                <div className="mt-10">
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-3 bg-white text-[var(--brand-accent-strong)] px-10 py-5 rounded-sm font-black text-[10px] md:text-xs tracking-widest uppercase hover:bg-black hover:text-white transition-all"
+                  >
+                    Solicitar atendimento <ArrowRight size={16} />
+                  </a>
+                </div>
+              </div>
+
+              <div className={`p-10 md:p-12 border rounded-sm relative overflow-hidden group ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-50 border-black/5'}`}>
+                <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-6 flex items-center gap-4 relative z-10">
                   <ShieldCheck className="text-[var(--brand-accent)]" size={32} />
                   Segurança Eletrônica
                 </h4>
-                <ul className="space-y-4 relative z-10">
+                <p className={`text-sm leading-relaxed mb-8 relative z-10 ${darkMode ? 'text-white/50' : 'text-black/50'}`}>
+                  Integração de soluções em segurança para residências, empresas e condomínios.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-4 relative z-10">
                   {[
-                    "Câmeras de vigilância (CFTV) – monitoramento contínuo",
-                    "Alarmes e sensores – detecção de intrusos em tempo real",
-                    "Controle de acesso – biometria e cartões inteligentes",
-                    "Automação residencial e comercial – integração total"
+                    "CFTV",
+                    "Alarmes",
+                    "Controle de acesso",
+                    "Cerca elétrica",
+                    "Vídeo porteiro",
+                    "Automação",
+                    "Monitoramento"
                   ].map((text, i) => (
                     <li key={i} className={`flex items-center gap-4 ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
                       <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)]"></div>
@@ -289,28 +359,6 @@ export default function App() {
                     </li>
                   ))}
                 </ul>
-                <div className={`mt-8 relative z-10 text-xs font-bold text-[var(--brand-accent-soft)] uppercase tracking-widest border-t pt-6 ${darkMode ? 'border-white/5' : 'border-black/5'}`}>Benefícios: Monitoramento 24/7 e Sistemas Integrados</div>
-              </div>
-
-              <div className={`p-12 border rounded-sm relative overflow-hidden group ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-50 border-black/5'}`}>
-                <h4 className="text-2xl font-black uppercase tracking-tighter mb-8 flex items-center gap-4 relative z-10">
-                  <Cpu className="text-[var(--brand-accent)]" size={32} />
-                  Serviços de TI
-                </h4>
-                <ul className="space-y-4 relative z-10">
-                  {[
-                    "Infraestrutura de rede: cabeamento estruturado e Wi-Fi",
-                    "Servidores e armazenamento: nuvem e backups",
-                    "Segurança digital: antivírus, firewall e monitoramento",
-                    "Consultoria em tecnologia: projetos personalizados"
-                  ].map((text, i) => (
-                    <li key={i} className={`flex items-center gap-4 ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)]"></div>
-                      {text}
-                    </li>
-                  ))}
-                </ul>
-                <div className={`mt-8 relative z-10 text-xs font-bold text-[var(--brand-accent-soft)] uppercase tracking-widest border-t pt-6 ${darkMode ? 'border-white/5' : 'border-black/5'}`}>Benefícios: Operações ágeis e suporte contínuo</div>
               </div>
             </div>
           </div>
@@ -358,10 +406,10 @@ export default function App() {
           </div>
         </section>
 
-        {/* Seguimentos Atendidos - Page 8 */}
+        {/* Segmentos Atendidos - Page 8 */}
         <section className={`py-16 md:py-32 border-y ${darkMode ? 'bg-[#080808] border-white/5' : 'bg-white border-black/5'}`}>
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-12 md:mb-20 uppercase tracking-tighter italic">Seguimentos <span className="text-[var(--brand-accent)]">Atendidos</span></h2>
+            <h2 className="text-3xl md:text-4xl font-black mb-12 md:mb-20 uppercase tracking-tighter italic">Segmentos <span className="text-[var(--brand-accent)]">Atendidos</span></h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
               {[
                 { label: "Obras Residenciais", icon: Layout },
@@ -369,7 +417,7 @@ export default function App() {
                 { label: "Manutenções em Geral", icon: Construction },
                 { label: "Execuções por Etapas", icon: Zap },
                 { label: "Segurança Eletrônica", icon: ShieldCheck },
-                { label: "Tecnologia da Informação", icon: Cpu }
+                { label: "Regularização de Imóveis", icon: Search }
               ].map((item, i) => (
                 <div key={i} className="group">
                   <div className={`w-20 h-20 mx-auto rounded-full border flex items-center justify-center mb-6 group-hover:bg-[var(--brand-accent-strong)] transition-colors ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-100 border-black/5'}`}>
@@ -408,7 +456,17 @@ export default function App() {
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
                       <Phone className="text-[var(--brand-accent)]" />
                     </div>
-                    <span className="text-2xl font-black">{contactInfo.phone}</span>
+                    <div className="flex flex-col gap-2">
+                      {contactPhones.map((p, i) => (
+                        <a
+                          key={i}
+                          href={p.href}
+                          className={`text-xl md:text-2xl font-black leading-tight hover:text-[var(--brand-accent)] transition-colors ${darkMode ? 'text-white' : 'text-black'}`}
+                        >
+                          {p.label}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className={`shrink-0 w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
@@ -433,7 +491,7 @@ export default function App() {
               <div className="flex flex-col justify-end mt-8 lg:mt-0">
                 <div className="p-8 md:p-12 bg-[var(--brand-accent)] rounded-sm">
                   <h2 className="text-3xl md:text-4xl font-black mb-6 md:mb-8 italic uppercase text-white">Pronto para começar seu projeto?</h2>
-                  <a href={whatsappLink} className="bg-white text-[var(--brand-accent)] px-4 md:px-12 py-5 md:py-6 rounded-sm font-black text-center block hover:bg-black hover:text-white transition-all uppercase tracking-widest text-[10px] md:text-xs">
+                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-white text-[var(--brand-accent)] px-4 md:px-12 py-5 md:py-6 rounded-sm font-black text-center block hover:bg-black hover:text-white transition-all uppercase tracking-widest text-[10px] md:text-xs">
                     Falar com Especialista
                   </a>
                 </div>
@@ -451,13 +509,24 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 p-3 md:p-4 bg-[var(--brand-accent)] text-white rounded-full shadow-2xl hover:bg-[var(--brand-accent-strong)] transition-colors"
+              className="fixed bottom-24 right-6 md:bottom-28 md:right-8 z-50 p-3 md:p-4 bg-[var(--brand-accent)] text-white rounded-full shadow-2xl hover:bg-[var(--brand-accent-strong)] transition-colors"
               aria-label="Voltar ao topo"
             >
               <ArrowUp size={24} />
             </motion.button>
           )}
         </AnimatePresence>
+
+        {/* WhatsApp Floating Button */}
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] text-white shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+          aria-label="Falar no WhatsApp"
+        >
+          <MessageCircle size={28} />
+        </a>
       </main>
     </div>
   );
