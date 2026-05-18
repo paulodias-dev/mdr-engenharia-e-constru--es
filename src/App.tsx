@@ -4,6 +4,9 @@ import {
   Construction,
   Layout,
   Hammer,
+  HardHat,
+  FileCheck,
+  GanttChart,
   MessageCircle,
   Phone,
   Instagram,
@@ -256,7 +259,7 @@ export default function App() {
               {[
                 {
                   title: "Construção e Reformas",
-                  icon: Construction,
+                  icon: HardHat,
                   description: "Obras executadas com planejamento, acompanhamento técnico e foco em qualidade, prazo e organização.",
                   items: [
                     "Construção residencial",
@@ -271,7 +274,7 @@ export default function App() {
                 },
                 {
                   title: "Regularização e Consultoria",
-                  icon: Search,
+                  icon: FileCheck,
                   description: "Soluções técnicas para adequação, regularização e acompanhamento profissional de obras e imóveis.",
                   items: [
                     "Laudos técnicos",
@@ -283,7 +286,7 @@ export default function App() {
                 },
                 {
                   title: "Gerenciamento de Obras",
-                  icon: Layout,
+                  icon: GanttChart,
                   description: "Gerenciamento eficiente para garantir organização, controle e qualidade em todas as etapas da obra.",
                   items: [
                     "Planejamento",
