@@ -71,7 +71,8 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappLink = "https://wa.me/5562984279654";
+  const whatsappLink = "https://wa.me/5562993111770";
+  const instagramLink = "https://www.instagram.com/mdrengenharia_?igsh=Z2xwdXA0a2ZzYmox&utm_source=qr";
   const contactInfo = {
     phones: ["62 98427-9654", "62 99311-1770"],
     email: "comercial@mdrengenharia.com.br",
@@ -289,8 +290,9 @@ export default function App() {
                     "Laudos técnicos",
                     "ART",
                     "Vistorias",
+                    "Regularização de imóveis",
                     "Consultoria técnica",
-                    "Regularização de imóveis"
+                    "Aprovação de projetos"
                   ]
                 },
                 {
@@ -514,7 +516,15 @@ export default function App() {
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
                       <Instagram className="text-[var(--brand-accent)]" size={20} />
                     </div>
-                    <span className="text-md font-bold">{contactInfo.instagram}</span>
+                    <a
+                      href={instagramLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-md font-bold hover:text-[var(--brand-accent)] transition-colors ${darkMode ? 'text-white' : 'text-black'}`}
+                      aria-label="Instagram MDR Engenharia"
+                    >
+                      {contactInfo.instagram}
+                    </a>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center ${darkMode ? 'bg-zinc-900' : 'bg-gray-100'}`}>
