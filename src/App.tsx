@@ -96,6 +96,15 @@ export default function App() {
     "HEG Hospital", "Premiere Park", "Constat", "Mendez", "Allbox", "Sabor & Arte", "Sunflower",
     "Bretas", "Irmãos Soares", "Linea"
   ];
+  const featuredClients = [
+    { name: "Melcon", logoSrc: "/clientes/melcon.jpeg" },
+    { name: "Vigor", logoSrc: "/clientes/vigor.png" },
+    { name: "Irmãos Soares", logoSrc: "/clientes/irmaos-soares.jpeg" },
+    { name: "Mendez", logoSrc: "/clientes/mendez.jpeg" },
+    { name: "Jardins Madri", logoSrc: "/clientes/jardins-madri.jpeg" },
+    { name: "HEG Hospital", logoSrc: "/clientes/heg.png" }
+  ];
+  const otherClients = clients.filter((c) => !featuredClients.some((fc) => fc.name === c));
 
   return (
     <div
@@ -437,8 +446,32 @@ export default function App() {
         <section id="clientes" className={`py-16 md:py-32 ${darkMode ? 'bg-black' : 'bg-[#fcfcfc]'}`}>
           <div className="max-w-7xl mx-auto px-6">
             <h2 className={`text-center text-[10px] font-bold uppercase tracking-[0.8em] mb-12 md:mb-20 ${darkMode ? 'text-white/30' : 'text-black/30'}`}>Alguns de nossos clientes:</h2>
-            <div className={`grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 items-center justify-items-center grayscale hover:grayscale-0 transition-all duration-700 ${darkMode ? 'opacity-40 hover:opacity-100' : 'opacity-60 hover:opacity-100'}`}>
-              {clients.map((c, i) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 items-stretch">
+              {featuredClients.map((client, i) => (
+                <div
+                  key={i}
+                  className={`group w-full rounded-sm border p-6 md:p-8 flex flex-col items-center justify-center text-center transition-all ${darkMode ? 'bg-zinc-900/40 border-white/5 hover:border-[var(--brand-accent)]' : 'bg-white border-black/5 hover:border-[var(--brand-accent)] hover:shadow-xl hover:-translate-y-1'}`}
+                >
+                  <div className="w-full h-14 md:h-16 flex items-center justify-center">
+                    <img
+                      src={client.logoSrc}
+                      alt={`Logo ${client.name}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+                  <span className={`mt-5 text-[10px] font-black uppercase tracking-widest ${darkMode ? 'text-white/30' : 'text-black/30'}`}>
+                    {client.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className={`mt-10 text-center text-[10px] font-bold uppercase tracking-[0.6em] ${darkMode ? 'text-white/20' : 'text-black/20'}`}>
+              E muitos outros.
+            </p>
+            <div className={`mt-12 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 items-center justify-items-center grayscale hover:grayscale-0 transition-all duration-700 ${darkMode ? 'opacity-40 hover:opacity-100' : 'opacity-60 hover:opacity-100'}`}>
+              {otherClients.map((c, i) => (
                 <div key={i} className="text-center font-black text-xs hover:scale-110 transition-transform cursor-default">
                   {c.toUpperCase()}
                 </div>
