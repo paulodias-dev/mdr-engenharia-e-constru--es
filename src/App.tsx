@@ -71,6 +71,7 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const aboutImageSrc = `${import.meta.env.BASE_URL}mdr-img.jpeg`;
   const whatsappLink = "https://wa.me/5562993111770";
   const instagramLink = "https://www.instagram.com/mdrengenharia_?igsh=Z2xwdXA0a2ZzYmox&utm_source=qr";
   const contactInfo = {
@@ -223,7 +224,7 @@ export default function App() {
               <div className="relative mt-8 lg:mt-0">
                 <div className={`aspect-[4/5] rounded-sm overflow-hidden border shadow-2xl ${darkMode ? 'border-white/5' : 'border-black/5'}`}>
                   <img
-                    src="/public/mdr-img.jpeg"
+                    src={aboutImageSrc}
                     alt="Capacete e Plantas"
                     className={`w-full h-full object-cover transition-all duration-700 ${darkMode ? 'grayscale hover:grayscale-0' : 'hover:scale-105'}`}
                     referrerPolicy="no-referrer"
