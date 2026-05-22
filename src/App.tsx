@@ -1,5 +1,6 @@
 import {
   ShieldCheck,
+  Server,
   Search,
   Construction,
   Layout,
@@ -328,29 +329,16 @@ export default function App() {
               ))}
             </div>
 
-            {/* Solução Completa + Segurança Eletrônica */}
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div className="relative overflow-hidden rounded-sm border border-[var(--brand-accent)] bg-[var(--brand-accent-strong)] text-white p-10 md:p-12 shadow-2xl">
-                <div className="flex items-center gap-4 mb-8">
-                  <Hammer size={28} className="opacity-90" />
-                  <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tighter">Solução Completa</h4>
-                </div>
-                <p className="text-base md:text-lg leading-relaxed text-white/85">
-                  Além da construção ou reforma, a MDR também entrega o imóvel preparado com soluções em segurança eletrônica, proporcionando mais praticidade, proteção e valorização do patrimônio.
-                </p>
-                <div className="mt-10">
-                  <a
-                    href={whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-3 bg-white text-[var(--brand-accent-strong)] px-10 py-5 rounded-sm font-black text-[10px] md:text-xs tracking-widest uppercase hover:bg-black hover:text-white transition-all"
-                  >
-                    Solicitar atendimento <ArrowRight size={16} />
-                  </a>
-                </div>
+            {/* Demais Serviços */}
+            <div className="my-12 md:my-16 flex items-center justify-center">
+              <div className={`px-8 py-3 border-2 font-black uppercase tracking-widest text-xs ${darkMode ? 'bg-black border-white/10 text-white/70' : 'bg-white border-black/10 text-black/60'}`}>
+                Demais serviços
               </div>
+            </div>
 
-              <div className={`p-10 md:p-12 border rounded-sm relative overflow-hidden group ${darkMode ? 'bg-zinc-900 border-white/5' : 'bg-gray-50 border-black/5'}`}>
+            {/* Segurança Eletrônica + Serviços de TI */}
+            <div className="grid lg:grid-cols-2 gap-12">
+              <div className={`p-8 md:p-10 border rounded-sm transition-all ${darkMode ? 'bg-zinc-900 border-white/5 hover:border-[var(--brand-accent)]' : 'bg-gray-50 border-black/5 hover:border-[var(--brand-accent)] hover:bg-white hover:shadow-xl'}`}>
                 <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-6 flex items-center gap-4 relative z-10">
                   <ShieldCheck className="text-[var(--brand-accent)]" size={32} />
                   Segurança Eletrônica
@@ -371,6 +359,30 @@ export default function App() {
                     <li key={i} className={`flex items-center gap-4 ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
                       <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)]"></div>
                       {text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={`p-8 md:p-10 border rounded-sm transition-all ${darkMode ? 'bg-zinc-900 border-white/5 hover:border-[var(--brand-accent)]' : 'bg-gray-50 border-black/5 hover:border-[var(--brand-accent)] hover:bg-white hover:shadow-xl'}`}>
+                <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-6 flex items-center gap-4 relative z-10">
+                  <Server className="text-[var(--brand-accent)]" size={32} />
+                  Serviços de TI
+                </h4>
+                <p className={`text-sm leading-relaxed mb-8 relative z-10 ${darkMode ? 'text-white/50' : 'text-black/50'}`}>
+                  Soluções digitais que conectam e protegem seu negócio.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-4 relative z-10">
+                  {[
+                    "Infraestrutura de rede: cabeamento estruturado, Wi‑Fi corporativo e conectividade segura",
+                    "Servidores e armazenamento: configuração e manutenção de servidores, nuvem e backups",
+                    "Suporte técnico e manutenção: monitoramento, assistência remota e onsite",
+                    "Segurança digital: antivírus, firewall, monitoramento de rede e prevenção de ataques cibernéticos",
+                    "Consultoria em tecnologia: projetos personalizados para otimizar processos e recursos"
+                  ].map((text, i) => (
+                    <li key={i} className={`flex items-start gap-4 ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)] mt-2 shrink-0"></div>
+                      <span className="text-sm leading-relaxed">{text}</span>
                     </li>
                   ))}
                 </ul>
